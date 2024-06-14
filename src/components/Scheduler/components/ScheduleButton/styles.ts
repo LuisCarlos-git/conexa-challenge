@@ -6,7 +6,7 @@ export const buttonCss = tv({
   px-4
   py-2
   bg-slate-200
-  rounded-[4px]
+  rounded-sm
   transition-colors
   border-2
   border-transparent

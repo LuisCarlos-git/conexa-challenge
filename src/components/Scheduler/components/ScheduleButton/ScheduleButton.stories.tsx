@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { withActions } from '@storybook/addon-actions/decorator';
 import { useArgs } from '@storybook/preview-api';
 
 import { ScheduleButton } from '.';
@@ -7,7 +6,6 @@ import { ScheduleButton } from '.';
 const meta = {
   component: ScheduleButton,
   title: 'Components/Scheduler/ScheduleButton',
-  decorators: [withActions],
 } satisfies Meta<typeof ScheduleButton>;
 type Story = StoryObj<typeof meta>;
 

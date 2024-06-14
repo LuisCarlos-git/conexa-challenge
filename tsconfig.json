@@ -23,7 +23,8 @@
     /*absolute paths*/
     "baseUrl": ".",
     "paths": {
-      "@styles/*": ["./src/styles/*"]
+      "@/styles/*": ["./src/styles/*"],
+      "@/utils": ["./src/utils/index.ts"],
     }
   },
   "include": ["src", "./test/setup.ts"],
