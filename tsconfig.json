@@ -26,6 +26,6 @@
       "@styles/*": ["./src/styles/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "./test/setup.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
