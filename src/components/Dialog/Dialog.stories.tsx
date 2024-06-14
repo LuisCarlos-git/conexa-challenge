@@ -1,8 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Dialog } from '.';
-import { DatePicker } from '../DatePicker';
-import { ScheduleButton } from '../Scheduler/components/ScheduleButton';
 import { action } from '@storybook/addon-actions';
 import { useArgs } from '@storybook/preview-api';
 
@@ -19,25 +17,7 @@ export const Defalut: Story = {
     open: false,
     onClose: action('onClose'),
     title: 'Schedule your session!',
-    children: (
-      <div className="max-w-fit grid grid-cols-2 gap-8 mt-4">
-        <DatePicker value={new Date()} onSelectDate={console.log} />
-        <div className=" h-fit flex gap-2 flex-wrap">
-          {[
-            '08:00',
-            '09:00',
-            '10:00',
-            '11:00',
-            '12:00',
-            '13:00',
-            '14:00',
-            '15:00',
-          ].map((schedule) => (
-            <ScheduleButton onClick={console.log}>{schedule}</ScheduleButton>
-          ))}
-        </div>
-      </div>
-    ),
+    children: 'dialog content',
   },
   argTypes: {
     children: {
