@@ -11,7 +11,7 @@ export function DatePicker({ value, onSelectDate }: DatePickerProps) {
     <DayPicker
       locale={enUS}
       selected={value}
-      onSelect={(date) => onSelectDate(date)}
+      onSelect={onSelectDate}
       mode="single"
       classNames={{
         caption: 'flex items-center justify-between font-medium text-gray-600',
