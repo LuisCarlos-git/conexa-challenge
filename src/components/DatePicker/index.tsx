@@ -24,6 +24,7 @@ export function DatePicker({ value, onSelectDate }: DatePickerProps) {
         button: 'text-gray-700 w-10 h-10 hover:bg-zinc-200 rounded-full',
         day_today: 'bg-zinc-200 font-bold text-gray-600',
         day_selected: '!text-white font-medium !bg-primary-blue',
+        caption_start: 'max-w-fit',
       }}
     />
   );
