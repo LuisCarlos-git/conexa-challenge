@@ -27,6 +27,10 @@
       "@/utils": ["./src/utils/index.ts"],
       "@/components": ["./src/components/index.ts"],
       "@/templates": ["./src/templates/index.ts"],
+      "@/enums": ["./src/enums/index.ts"],
+      "@/lib/*": ["./src/lib/*"],
+      "@/types/*": ["./src/types/*"],
+      "@/services/*": ["./src/services/*"],
     }
   },
   "include": ["src", "./test/setup.ts"],
