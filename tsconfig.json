@@ -25,6 +25,7 @@
     "paths": {
       "@/styles/*": ["./src/styles/*"],
       "@/utils": ["./src/utils/index.ts"],
+      "@/components": ["./src/components/index.ts"],
     }
   },
   "include": ["src", "./test/setup.ts"],
