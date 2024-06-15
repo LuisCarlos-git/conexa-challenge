@@ -46,7 +46,7 @@ export function ProfessionalCard({ data }: ProfessionalCardProps) {
             </span>
           </div>
           <span className={styles.serviceDetailsCss()}>
-            {formatServiceDetails(serviceTime, servicePrice)}
+            {formatServiceDetails({ serviceTime, servicePrice })}
           </span>
         </div>
       </div>
