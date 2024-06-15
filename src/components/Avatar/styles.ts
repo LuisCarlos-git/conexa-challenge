@@ -1,7 +1,7 @@
 import { tv } from 'tailwind-variants';
 
 export const rootCss = tv({
-  base: 'w-60 h-60 rounded-full select-none overflow-hidden block',
+  base: 'w-48 h-48 rounded-full select-none overflow-hidden block',
 });
 
 export const imageCss = tv({

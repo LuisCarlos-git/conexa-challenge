@@ -1,5 +1,7 @@
+import { TemplateApp } from '@/templates';
+
 function App() {
-  return <h1 className="text-red-500">ola</h1>;
+  return <TemplateApp />;
 }
 
 export default App;
