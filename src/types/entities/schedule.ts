@@ -3,4 +3,5 @@ export interface ISchedule {
   value: string;
   label: string;
   inUse: boolean;
+  date?: string;
 }

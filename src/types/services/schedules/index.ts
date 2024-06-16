@@ -8,4 +8,5 @@ export interface IReserveTimes {
 
 export interface IScheduleServices {
   reserveSession(data: IReserveTimes): Promise<void>;
+  getAllReserves(): Promise<IReserveTimes[]>;
 }

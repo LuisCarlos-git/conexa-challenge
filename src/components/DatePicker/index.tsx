@@ -2,18 +2,24 @@ import { DayPicker } from 'react-day-picker';
 import { enUS } from 'date-fns/locale';
 
 type DatePickerProps = {
-  value: Date;
+  value: Date | null;
   onSelectDate: (date?: Date) => void;
+  onMonthChange: () => void;
 };
 
-export function DatePicker({ value, onSelectDate }: DatePickerProps) {
+export function DatePicker({
+  value,
+  onSelectDate,
+  onMonthChange,
+}: DatePickerProps) {
   return (
     <DayPicker
+      onMonthChange={onMonthChange}
       disabled={{
         before: new Date(),
       }}
       locale={enUS}
-      selected={value}
+      selected={value ?? undefined}
       onSelect={onSelectDate}
       mode="single"
       classNames={{

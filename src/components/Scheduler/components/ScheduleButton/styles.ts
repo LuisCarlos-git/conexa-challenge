@@ -11,6 +11,9 @@ export const buttonCss = tv({
   border-2
   border-transparent
   hover:border-slate-800
+  disabled:opacity-75
+  disabled:cursor-not-allowed
+  disabled:hover:border-transparent
   `,
 
   variants: {
