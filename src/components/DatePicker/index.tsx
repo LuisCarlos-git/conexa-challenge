@@ -9,6 +9,9 @@ type DatePickerProps = {
 export function DatePicker({ value, onSelectDate }: DatePickerProps) {
   return (
     <DayPicker
+      disabled={{
+        before: new Date(),
+      }}
       locale={enUS}
       selected={value}
       onSelect={onSelectDate}
@@ -25,6 +28,7 @@ export function DatePicker({ value, onSelectDate }: DatePickerProps) {
         day_today: 'bg-zinc-200 font-bold text-gray-600',
         day_selected: '!text-white font-medium !bg-primary-blue',
         caption_start: 'max-w-fit',
+        day_disabled: 'opacity-60 hover:bg-white cursor-not-allowed',
       }}
     />
   );

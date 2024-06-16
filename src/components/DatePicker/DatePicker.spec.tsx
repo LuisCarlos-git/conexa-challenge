@@ -35,4 +35,18 @@ describe('<ScheduleButton />', () => {
 
     expect(mockOnSelectDate).toHaveBeenCalled();
   });
+
+  it('should not select date before to day', async () => {
+    const mockOnSelectDate = vi.fn();
+    const { getByRole } = render(
+      <DatePicker
+        value={new Date('2023-06-17T00:00:00')}
+        onSelectDate={mockOnSelectDate}
+      />
+    );
+
+    await user.click(getByRole('gridcell', { name: '15' }));
+
+    expect(mockOnSelectDate).not.toHaveBeenCalled();
+  });
 });

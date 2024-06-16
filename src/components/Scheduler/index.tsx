@@ -15,7 +15,7 @@ type Schedule = {
 type SchedulerProps = {
   open: boolean;
   onClose: () => void;
-  onSaveSchedule: (date: string, schedules: Schedule[]) => void;
+  onSaveSchedule: (date: string, schedules: Schedule) => void;
   schedules: Schedule[];
 };
 
@@ -25,42 +25,25 @@ export function Scheduler({
   open,
   schedules,
 }: SchedulerProps) {
-  const [activeList, setActiveList] = useState<Schedule[]>(() => {
-    const schedulesInUseSchedule = schedules.filter((item) => item.inUse);
-
-    if (schedulesInUseSchedule.length) return schedulesInUseSchedule;
-
-    return [];
+  const [activeSchedule, setActiveSchedule] = useState<Schedule | null>(() => {
+    return schedules.find((item) => item.inUse) ?? null;
   });
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
   function handleAddScheduleInActiveList(schedule: Schedule) {
-    const scheduleActive = activeList.findIndex(
-      (item) => item.value === schedule.value
-    );
-
-    if (scheduleActive !== -1) {
-      setActiveList((prevState) =>
-        prevState.filter((item) => item.value !== schedule.value)
-      );
-      return;
-    }
-
-    setActiveList((prevState) => [...prevState, { ...schedule, inUse: true }]);
-  }
-
-  function hasItemInActiveList(value: string) {
-    return activeList.some((item) => item.value === value);
+    setActiveSchedule({ ...schedule, inUse: true });
   }
 
   function handleSelectDate(date: Date) {
+    setActiveSchedule(null);
     setSelectedDate(date);
   }
 
   function handleOnSaveSchedule() {
-    if (!activeList.length) return;
+    if (activeSchedule === null) return;
 
-    onSaveSchedule(format(selectedDate, 'dd-MM-yyyy'), activeList);
+    console.log('its here 2');
+    onSaveSchedule(format(selectedDate, 'dd-MM-yyyy'), activeSchedule);
   }
 
   return (
@@ -74,7 +57,7 @@ export function Scheduler({
           {schedules.map((schedule) => (
             <ScheduleButton
               key={schedule.value}
-              isActive={hasItemInActiveList(schedule.value)}
+              isActive={activeSchedule?.value === schedule.value}
               onClick={() => handleAddScheduleInActiveList(schedule)}
             >
               {schedule.label}
