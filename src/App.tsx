@@ -1,10 +1,13 @@
 import { TemplateApp } from '@/templates';
 import { ProfessionalProvider } from '@/context/Professional';
+import { ScheduleProvider } from '@/context/Schedule';
 
 function App() {
   return (
     <ProfessionalProvider>
-      <TemplateApp />
+      <ScheduleProvider>
+        <TemplateApp />
+      </ScheduleProvider>
     </ProfessionalProvider>
   );
 }

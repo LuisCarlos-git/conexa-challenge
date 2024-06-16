@@ -2,14 +2,26 @@ import { useProfessional } from '@/context/Professional';
 import { ProfessionalCard } from './components/ProfessionalCard';
 import { Button, Scheduler } from '@/components';
 import { useState } from 'react';
+import { SCHEDULE_LIST } from './constants/scheduleList';
+import { useSchedule } from '@/context/Schedule';
+import { ISchedule } from '@/types/entities/schedule';
 
 export function TemplateApp() {
   const { professional } = useProfessional();
+  const { reserveTime } = useSchedule();
 
   const [reserveTimeDialogOpen, setReserveTimeDialogOpen] = useState(false);
 
   function handleToggleReserveTimeDialog() {
     setReserveTimeDialogOpen((prevState) => !prevState);
+  }
+
+  async function handleReserveTime(schedule: ISchedule) {
+    if (professional === null) return;
+    await reserveTime({
+      professional,
+      schedule,
+    });
   }
 
   return (
@@ -22,12 +34,8 @@ export function TemplateApp() {
         <Scheduler
           onClose={handleToggleReserveTimeDialog}
           open={reserveTimeDialogOpen}
-          schedules={[
-            { inUse: false, label: '08:00', value: '08:00' },
-            { inUse: false, label: '09:00', value: '09:00' },
-            { inUse: false, label: '10:00', value: '10:00' },
-          ]}
-          onSaveSchedule={console.log}
+          schedules={SCHEDULE_LIST}
+          onSaveSchedule={handleReserveTime}
         />
       </div>
     )

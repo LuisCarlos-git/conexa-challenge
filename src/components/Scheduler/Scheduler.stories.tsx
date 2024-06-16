@@ -17,9 +17,9 @@ export const Defalut: Story = {
     onClose: action('onClose'),
     onSaveSchedule: action('onSaveSchedule'),
     schedules: [
-      { inUse: false, label: '08:00', value: '08:00' },
-      { inUse: false, label: '09:00', value: '09:00' },
-      { inUse: false, label: '10:00', value: '10:00' },
+      { id: crypto.randomUUID(), inUse: false, label: '08:00', value: '08:00' },
+      { id: crypto.randomUUID(), inUse: false, label: '09:00', value: '09:00' },
+      { id: crypto.randomUUID(), inUse: false, label: '10:00', value: '10:00' },
     ],
   },
 };
@@ -30,9 +30,9 @@ export const WithDefaltSchedule: Story = {
     onClose: action('onClose'),
     onSaveSchedule: action('onSaveSchedule'),
     schedules: [
-      { inUse: false, label: '08:00', value: '08:00' },
-      { inUse: true, label: '09:00', value: '09:00' },
-      { inUse: false, label: '10:00', value: '10:00' },
+      { id: crypto.randomUUID(), inUse: false, label: '08:00', value: '08:00' },
+      { id: crypto.randomUUID(), inUse: true, label: '09:00', value: '09:00' },
+      { id: crypto.randomUUID(), inUse: false, label: '10:00', value: '10:00' },
     ],
   },
 };

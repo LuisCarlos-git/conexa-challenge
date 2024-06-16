@@ -7,15 +7,17 @@ import { format } from 'date-fns';
 import { Button } from '../Button';
 
 type Schedule = {
+  id: string;
   label: string;
   value: string;
   inUse: boolean;
+  date?: string;
 };
 
 type SchedulerProps = {
   open: boolean;
   onClose: () => void;
-  onSaveSchedule: (date: string, schedules: Schedule) => void;
+  onSaveSchedule: (schedules: Schedule) => void;
   schedules: Schedule[];
 };
 
@@ -42,8 +44,10 @@ export function Scheduler({
   function handleOnSaveSchedule() {
     if (activeSchedule === null) return;
 
-    console.log('its here 2');
-    onSaveSchedule(format(selectedDate, 'dd-MM-yyyy'), activeSchedule);
+    onSaveSchedule({
+      ...activeSchedule,
+      date: format(selectedDate, 'dd-MM-yyyy'),
+    });
   }
 
   return (
@@ -57,7 +61,10 @@ export function Scheduler({
           {schedules.map((schedule) => (
             <ScheduleButton
               key={schedule.value}
-              isActive={activeSchedule?.value === schedule.value}
+              isActive={
+                activeSchedule?.value === schedule.value ||
+                activeSchedule?.date === format(selectedDate, 'dd-MM-yyyy')
+              }
               onClick={() => handleAddScheduleInActiveList(schedule)}
             >
               {schedule.label}

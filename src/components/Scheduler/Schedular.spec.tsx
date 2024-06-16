@@ -5,15 +5,15 @@ import userEvent, { UserEvent } from '@testing-library/user-event';
 import { format } from 'date-fns';
 
 const schedules = [
-  { inUse: false, label: '08:00', value: '08:00' },
-  { inUse: false, label: '09:00', value: '09:00' },
-  { inUse: false, label: '10:00', value: '10:00' },
+  { id: '1', inUse: false, label: '08:00', value: '08:00' },
+  { id: '2', inUse: false, label: '09:00', value: '09:00' },
+  { id: '3', inUse: false, label: '10:00', value: '10:00' },
 ];
 
 const schedulesWithInUse = [
-  { inUse: true, label: '08:00', value: '08:00' },
-  { inUse: false, label: '09:00', value: '09:00' },
-  { inUse: false, label: '10:00', value: '10:00' },
+  { id: '1', inUse: true, label: '08:00', value: '08:00' },
+  { id: '2', inUse: false, label: '09:00', value: '09:00' },
+  { id: '3', inUse: false, label: '10:00', value: '10:00' },
 ];
 
 describe('<Scheduler />', () => {
@@ -46,6 +46,7 @@ describe('<Scheduler />', () => {
     expect(mockOnSaveSchedule).toHaveBeenCalledWith(
       `${dayPlusOne}-06-${year}`,
       {
+        id: '1',
         inUse: true,
         label: '08:00',
         value: '08:00',

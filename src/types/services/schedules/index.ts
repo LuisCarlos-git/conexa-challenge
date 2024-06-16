@@ -1,6 +1,9 @@
+import { IProfessional } from '@/types/entities/professional';
+import { ISchedule } from '@/types/entities/schedule';
+
 export interface IReserveTimes {
-  professional: string;
-  selectedSchedules: string;
+  professional: IProfessional;
+  schedule: ISchedule;
 }
 
 export interface IScheduleServices {
