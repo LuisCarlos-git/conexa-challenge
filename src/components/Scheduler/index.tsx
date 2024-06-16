@@ -4,7 +4,7 @@ import { Dialog } from '../Dialog';
 import { ScheduleButton } from './components/ScheduleButton';
 import { format } from 'date-fns';
 
-import * as styles from './styles';
+import { Button } from '../Button';
 
 type Schedule = {
   label: string;
@@ -65,12 +65,7 @@ export function Scheduler({
           ))}
         </div>
       </div>
-      <button
-        className={styles.saveScheduleButtonCss()}
-        onClick={handleOnSaveSchedule}
-      >
-        Save schedule
-      </button>
+      <Button onClick={handleOnSaveSchedule}>Save schedule</Button>
     </Dialog>
   );
 }

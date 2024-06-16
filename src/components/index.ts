@@ -3,3 +3,4 @@ export * from './Dialog';
 export * from './StarRating';
 export * from './Scheduler';
 export * from './Avatar';
+export * from './Button';
