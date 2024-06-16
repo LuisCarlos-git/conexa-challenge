@@ -10,7 +10,7 @@ type Story = StoryObj<typeof meta>;
 
 export default meta;
 
-export const Defalut: Story = {
+export const Default: Story = {
   args: {
     image: 'https://api.multiavatar.com/Binx Bond.svg',
     username: 'Luis Carlos',
