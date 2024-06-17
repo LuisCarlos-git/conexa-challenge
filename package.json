@@ -11,7 +11,9 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test:ui": "vitest --ui --coverage",
-    "test": "vitest"
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "jsonserver:up": "json-server ./database/db.json" 
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.0.4",
