@@ -48,6 +48,7 @@ usuario pode agendar uma consulta em horarios determinados
 |prettier|^3.3.2|
 |eslint|^8.57.0|
 |typescript|^5.2.2|
+|zod|^3.23.8|
 
 ## Variaveis de ambiente
 crie uma copia do `.env.exemple` e renomeie para `.env` e adicione este valor `http://localhost:3000` para a variavel `VITE_APP_API_URL`

@@ -1,8 +1,9 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { IHttpClient } from '@/types/lib/httpClient';
+import { env } from '@/utils';
 
 export const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_APP_API_URL,
+  baseURL: env.VITE_APP_API_URL,
 });
 
 class HttpClient implements IHttpClient {
