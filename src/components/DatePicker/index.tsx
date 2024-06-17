@@ -4,7 +4,7 @@ import { enUS } from 'date-fns/locale';
 type DatePickerProps = {
   value: Date | null;
   onSelectDate: (date?: Date) => void;
-  onMonthChange: () => void;
+  onMonthChange?: () => void;
 };
 
 export function DatePicker({

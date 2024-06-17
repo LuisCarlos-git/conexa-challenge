@@ -24,14 +24,19 @@ describe('<ScheduleButton />', () => {
 
   it('should call onSelectDate', async () => {
     const mockOnSelectDate = vi.fn();
+
+    const dayPlusOne = new Date().getDate();
+    const year = new Date().getFullYear();
+    const month = new Date().getMonth() + 1;
+
     const { getByText } = render(
       <DatePicker
-        value={new Date('2024-06-17T00:00:00')}
+        value={new Date(`${year}-${month}-${dayPlusOne}T00:00:00`)}
         onSelectDate={mockOnSelectDate}
       />
     );
 
-    await user.click(getByText('16'));
+    await user.click(getByText(String(dayPlusOne)));
 
     expect(mockOnSelectDate).toHaveBeenCalled();
   });

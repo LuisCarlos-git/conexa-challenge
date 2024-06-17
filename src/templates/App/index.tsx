@@ -5,39 +5,50 @@ import { useState } from 'react';
 import { SCHEDULE_LIST } from './constants/scheduleList';
 import { useSchedule } from '@/context/Schedule';
 import { ISchedule } from '@/types/entities/schedule';
+import { toast } from 'sonner';
 
 export function TemplateApp() {
   const { professional } = useProfessional();
   const { reserveTime } = useSchedule();
 
   const [reserveTimeDialogOpen, setReserveTimeDialogOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   function handleToggleReserveTimeDialog() {
     setReserveTimeDialogOpen((prevState) => !prevState);
   }
 
   async function handleReserveTime(schedule: ISchedule) {
-    if (professional === null) return;
-    await reserveTime({
-      professional,
-      schedule,
-    });
+    try {
+      setLoading(true);
+      await reserveTime({
+        professional: professional!,
+        schedule,
+      });
+    } catch {
+      toast.error('failed create reserve');
+    } finally {
+      setLoading(false);
+    }
   }
 
-  return (
-    professional && (
-      <div className="w-full mx-auto max-w-[900px] mt-[52px]">
-        <ProfessionalCard data={professional} />
-        <Button className="w-44" onClick={handleToggleReserveTimeDialog}>
-          Reserve time
-        </Button>
-        <Scheduler
-          onClose={handleToggleReserveTimeDialog}
-          open={reserveTimeDialogOpen}
-          schedules={SCHEDULE_LIST}
-          onSaveSchedule={handleReserveTime}
-        />
-      </div>
-    )
+  return professional ? (
+    <div className="w-full mx-auto max-w-[900px] mt-[52px]">
+      <ProfessionalCard data={professional} />
+      <Button className="w-44" onClick={handleToggleReserveTimeDialog}>
+        Reserve time
+      </Button>
+      <Scheduler
+        onClose={handleToggleReserveTimeDialog}
+        open={reserveTimeDialogOpen}
+        schedules={SCHEDULE_LIST}
+        onSaveSchedule={handleReserveTime}
+        isLoading={loading}
+      />
+    </div>
+  ) : (
+    <div>
+      <h1>Ajust your database/db.json</h1>
+    </div>
   );
 }

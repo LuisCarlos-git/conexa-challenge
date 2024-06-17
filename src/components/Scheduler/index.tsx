@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
-import { DatePicker } from '../DatePicker';
-import { Dialog } from '../Dialog';
-import { ScheduleButton } from './components/ScheduleButton';
 import { format } from 'date-fns';
+import { toast } from 'sonner';
 
+import { Dialog } from '../Dialog';
 import { Button } from '../Button';
+import { DatePicker } from '../DatePicker';
+import { ScheduleButton } from './components/ScheduleButton';
+
 import { scheduleServices } from '@/services/schedules';
 
 type Schedule = {
@@ -20,6 +22,7 @@ type SchedulerProps = {
   onClose: () => void;
   onSaveSchedule: (schedules: Schedule) => void;
   schedules: Schedule[];
+  isLoading?: boolean;
 };
 
 export function Scheduler({
@@ -27,6 +30,7 @@ export function Scheduler({
   onSaveSchedule,
   open,
   schedules,
+  isLoading,
 }: SchedulerProps) {
   const [activeSchedule, setActiveSchedule] = useState<Schedule | null>(null);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -50,7 +54,7 @@ export function Scheduler({
       setActiveSchedule(hasReserveToday.schedule);
       setDisabledAll(true);
     } catch {
-      console.log('failed get all reserves');
+      toast.error('failed get all reserves');
     }
   }, [selectedDate]);
 
@@ -78,17 +82,22 @@ export function Scheduler({
     setDisabledAll(true);
   }
 
-  function handleMounthChange() {
+  function reset() {
     setActiveSchedule(null);
     setDisabledAll(false);
     setSelectedDate(null);
   }
 
+  function handleClose() {
+    reset();
+    onClose();
+  }
+
   return (
-    <Dialog open={open} onClose={onClose} title="Schedule your session!">
+    <Dialog open={open} onClose={handleClose} title="Schedule your session!">
       <div className="max-w-fit grid grid-cols-2 gap-8 mt-4">
         <DatePicker
-          onMonthChange={handleMounthChange}
+          onMonthChange={reset}
           value={selectedDate}
           onSelectDate={(date) => handleSelectDate(date ?? new Date())}
         />
@@ -105,7 +114,9 @@ export function Scheduler({
           ))}
         </div>
       </div>
-      <Button onClick={handleOnSaveSchedule}>Save schedule</Button>
+      <Button isLoading={isLoading} onClick={handleOnSaveSchedule}>
+        Save schedule
+      </Button>
     </Dialog>
   );
 }
