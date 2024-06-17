@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig } from 'axios';
 import { IHttpClient } from '@/types/lib/httpClient';
 
 export const axiosInstance = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: import.meta.env.VITE_APP_API_URL,
 });
 
 class HttpClient implements IHttpClient {
