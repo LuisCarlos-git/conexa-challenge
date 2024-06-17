@@ -9,6 +9,8 @@ import { ScheduleButton } from './components/ScheduleButton';
 
 import { scheduleServices } from '@/services/schedules';
 
+import * as styles from './styles';
+
 type Schedule = {
   id: string;
   label: string;
@@ -80,7 +82,6 @@ export function Scheduler({
     });
 
     setDisabledAll(true);
-    onClose();
   }
 
   function reset() {
@@ -96,13 +97,13 @@ export function Scheduler({
 
   return (
     <Dialog open={open} onClose={handleClose} title="Schedule your session!">
-      <div className="max-w-fit grid grid-cols-2 gap-8 mt-4">
+      <div className={styles.contentCss()}>
         <DatePicker
           onMonthChange={reset}
           value={selectedDate}
           onSelectDate={(date) => handleSelectDate(date ?? new Date())}
         />
-        <div className=" h-fit flex gap-2 flex-wrap">
+        <div className="h-fit flex gap-2 flex-wrap">
           {schedules.map((schedule) => (
             <ScheduleButton
               key={schedule.value}

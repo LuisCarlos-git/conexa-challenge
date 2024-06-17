@@ -29,11 +29,12 @@ export function TemplateApp() {
       toast.error('failed create reserve');
     } finally {
       setLoading(false);
+      setReserveTimeDialogOpen(false);
     }
   }
 
   return professional ? (
-    <div className="w-full mx-auto max-w-[900px] mt-[52px]">
+    <div className="w-full mx-auto max-w-[900px] mt-[52px] px-4">
       <ProfessionalCard data={professional} />
       <Button className="w-44" onClick={handleToggleReserveTimeDialog}>
         Reserve time
