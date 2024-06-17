@@ -30,6 +30,7 @@ describe('<Scheduler />', () => {
 
   beforeEach(() => {
     user = userEvent.setup();
+    vi.clearAllMocks();
   });
 
   it('should call onSaveSchedule', async () => {
@@ -104,7 +105,7 @@ describe('<Scheduler />', () => {
     expect(button).toHaveClass(activeClass);
   });
 
-  it('should not call onSaveSchedule when activeList is empty', async () => {
+  it('should not call onSaveSchedule when date and schedule is empty', async () => {
     const mockOnSaveSchedule = vi.fn();
 
     const { getByRole } = render(
@@ -120,6 +121,7 @@ describe('<Scheduler />', () => {
 
     expect(mockOnSaveSchedule).not.toHaveBeenCalled();
     expect(mockOnSaveSchedule).not.toHaveBeenCalledTimes(1);
+    expect(mockToastError).toHaveBeenCalled();
   });
 
   it('should call get all reserves when change select date', async () => {

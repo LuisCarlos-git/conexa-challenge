@@ -74,7 +74,10 @@ export function Scheduler({
   }
 
   function handleOnSaveSchedule() {
-    if (activeSchedule === null || selectedDate === null) return;
+    if (activeSchedule === null || selectedDate === null) {
+      toast.error('select date and one time!');
+      return;
+    }
 
     onSaveSchedule({
       ...activeSchedule,

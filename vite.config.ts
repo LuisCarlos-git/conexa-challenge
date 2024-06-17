@@ -21,7 +21,8 @@ export default defineConfig({
       exclude: [
         ...configDefaults.exclude,
         'src/styles',
-        'src/utils/test',
+        'src/utils/env',
+        'src/utils/sleep',
         'src/App.tsx',
         'src/main.tsx',
         'src/**/*.stories.tsx',
