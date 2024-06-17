@@ -80,6 +80,7 @@ export function Scheduler({
     });
 
     setDisabledAll(true);
+    onClose();
   }
 
   function reset() {
