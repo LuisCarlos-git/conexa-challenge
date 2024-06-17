@@ -49,6 +49,9 @@ usuario pode agendar uma consulta em horarios determinados
 |eslint|^8.57.0|
 |typescript|^5.2.2|
 
+## Variaveis de ambiente
+crie uma copia do `.env.exemple` e renomeie para `.env` e adicione este valor `http://localhost:3000` para a variavel `VITE_APP_API_URL`
+
 ## Rodando localmente
 
 clone o repositorio
@@ -69,9 +72,6 @@ após instalar as dependencias execute o seguinte comando para rodar o backend
 com o servidor rodando em outro terminal execute o comando para rodar o projeto
 
     pnpm dev | npm run dev
-
-## Variaveis de ambiente
-crie uma copia do `.env.exemple` e renomeie para `.env` e adicione este valor `http://localhost:3000` para a variavel `VITE_APP_API_URL`
 
 agora e so usar a aplicação
 
